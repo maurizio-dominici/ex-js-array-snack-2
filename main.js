@@ -45,6 +45,34 @@ const books = [
   },
 ];
 
+const areThereAvailableBooks = books.some((b) => b.available);
+console.log("areThereAvailableBooks :", areThereAvailableBooks);
+
+const booksByPrice = books.sort((a, b) => {
+  const priceA = parseInt(a.price);
+  const priceB = parseInt(b.price);
+  return priceB - priceA;
+});
+
+booksByPrice.sort((a, b) =>
+  a.available === b.available ? 0 : a.available ? -1 : 1
+);
+console.log("booksByPrice :", booksByPrice);
+
+const tagCounts = books.reduce((acc, b) => {
+  b.tags.forEach((tag) => {
+    if (acc[tag]) {
+      acc[tag]++;
+    } else {
+      acc[tag] = 1;
+    }
+  });
+
+  return acc;
+}, {});
+
+console.log("tagCounts :", tagCounts);
+
 // const sommaNumeri = (a, b) => a + b;
 
 // const longBooks = books.filter((b) => b.pages > 300);
@@ -97,8 +125,10 @@ async function getBooks(ids) {
   const bookPromises = ids.map((id) =>
     fetch(`${baseUrl}${id}`).then((res) => res.json())
   );
-  const books = await Promise.all(bookPromises);
-  return books;
+  const booksDinamyc = await Promise.all(bookPromises);
+  return booksDinamyc;
 }
 
-getBooks(ids).then((books) => console.log("Books:", books));
+getBooks(ids).then((booksDinamyc) =>
+  console.log("booksDinamyc:", booksDinamyc)
+);

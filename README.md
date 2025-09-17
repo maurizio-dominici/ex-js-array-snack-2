@@ -111,7 +111,7 @@ Crea una variabile booleana **(areThereAvailableBooks)** per verificare se c’�
 
 Crea un array **(booksByPrice)** con gli elementi di books ordinati in base al prezzo (crescente).
 
-Ordina l’array booksByPricein base alla disponibilità (prima quelli disponibili), senza creare un nuovo array.
+Ordina l’array booksByPrice in base alla disponibilità (prima quelli disponibili), senza creare un nuovo array.
 
 # Snack 7 (Bonus) - Analizza i tag
 
