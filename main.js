@@ -89,3 +89,16 @@ const agesSum = ages.reduce((acc, age) => {
 console.log(agesSum);
 
 console.log(`Eta media :, ${agesSum / ages.length}`);
+
+const ids = [2, 13, 7, 21, 19];
+
+async function getBooks(ids) {
+  const baseUrl = "http://localhost:3333/books/";
+  const bookPromises = ids.map((id) =>
+    fetch(`${baseUrl}${id}`).then((res) => res.json())
+  );
+  const books = await Promise.all(bookPromises);
+  return books;
+}
+
+getBooks(ids).then((books) => console.log("Books:", books));
